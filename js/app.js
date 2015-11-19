@@ -2,9 +2,12 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    this.x = 100;
+    this.y = 100;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -29,9 +32,24 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+var allEnemies = [ new Enemy(100, 100)];
 
+var Player = function() {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+    this.x = 100;
+    this.y = 100;
 
+    //need a checkCollisions functionality to reset the game when you touch a bug
+    //handleInput listener method to increment or decrement x and y values when keys are pressed
 
+    this.sprite = 'images/char-boy.png';
+};
+Player.prototype.update = function(dt) {
+
+};
+
+var player = new Player(200, 200);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
