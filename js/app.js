@@ -1,9 +1,9 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = 100;
-    this.y = 100;
+    this.x = x;
+    this.y = y;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -32,13 +32,13 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [ new Enemy(100, 100)];
+var allEnemies = [ new Enemy(100, 100),  new Enemy(200, 200),  new Enemy(100, 300)];
 
 var Player = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = 100;
-    this.y = 100;
+    this.x = 200;
+    this.y = 400;
 
     //need a checkCollisions functionality to reset the game when you touch a bug
     //handleInput listener method to increment or decrement x and y values when keys are pressed
