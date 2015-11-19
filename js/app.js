@@ -50,13 +50,17 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
 };
 Player.prototype.update = function(dt) {
-
+    this.x*dt;
+    this.y*dt;
 };
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-Player.prototype.handleInput = function() {
-
+Player.prototype.handleInput = function(dir) {
+    if(dir==='left') this.x-=100;
+    if(dir==='right') this.x+=100;
+    if(dir==='up') this.y-=83;
+    if(dir==='down') this.y+=83;
 }
 
 var player = new Player(20, 20);
