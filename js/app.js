@@ -57,10 +57,20 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Player.prototype.handleInput = function(dir) {
-    if(dir==='left') this.x-=100;
-    if(dir==='right') this.x+=100;
-    if(dir==='up') this.y-=83;
-    if(dir==='down') this.y+=83;
+    if( this.x < 350){ //contains movement to canvas
+        if(dir==='right') this.x+=100;
+    };
+    if( this.x > 10){
+        if(dir==='left') this.x-=100;
+    };
+    if( this.y > 10){
+        if(dir==='up') this.y-=83;
+    };
+    if( this.y < 400){
+        if(dir==='down') this.y+=83;
+    };
+
+
 }
 
 var player = new Player(20, 20);
