@@ -48,8 +48,14 @@ var Player = function() {
 Player.prototype.update = function(dt) {
 
 };
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+Player.prototype.handleInput = function() {
 
-var player = new Player(200, 200);
+}
+
+var player = new Player(20, 20);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
