@@ -1,13 +1,8 @@
-// Enemies our player must avoid
 var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
     this.x = x;
     this.y = y;
     this.speed = speed;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-
+   
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -18,37 +13,40 @@ Enemy.prototype.update = function(dt) {
     if  (this.x > 600){
         this.x = -100;
     }
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    this.checkCollision(player);
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+Enemy.prototype.checkCollision = function(player) {
+        var enemyObj = 50;
+        if (player.x < this.x + enemyObj &&
+            player.x + enemyObj > this.x &&
+            player.y < this.y + enemyObj &&
+            enemyObj + player.y > this.y) {
+            alert("Collision!");
+        }
+    };
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+var allEnemies = [ new Enemy(100, 50, 100),  new Enemy(200, 220, 10),  new Enemy(100, 140, 200)];
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-var allEnemies = [ new Enemy(100, 50, 100),  new Enemy(200, 220, 10),  new Enemy(100, 140, 200)];
-
-var Player = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+var Player = function(x, y) {
     this.x = 200;
     this.y = 400;
 
     //need a checkCollisions functionality to reset the game when you touch a bug
-    //handleInput listener method to increment or decrement x and y values when keys are pressed
 
     this.sprite = 'images/char-boy.png';
 };
+
+
 Player.prototype.update = function(dt) {
     this.x*dt;
     this.y*dt;
@@ -56,8 +54,9 @@ Player.prototype.update = function(dt) {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 Player.prototype.handleInput = function(dir) {
-    if( this.x < 350){ //contains movement to canvas
+    if( this.x < 350){ //contains player movement to canvas
         if(dir==='right') this.x+=100;
     };
     if( this.x > 10){
@@ -72,7 +71,7 @@ Player.prototype.handleInput = function(dir) {
 
 
 }
-
+// Place the player object in a variable called player
 var player = new Player(20, 20);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -86,3 +85,4 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
