@@ -26,7 +26,9 @@ Enemy.prototype.checkCollision = function(player) {
             player.x + enemyObj > this.x &&
             player.y < this.y + enemyObj &&
             enemyObj + player.y > this.y) {
-            alert("Collision!");
+            //player position resets
+            player.x = 200;
+            player.y = 400;
         }
     };
 // Now instantiate your objects.
