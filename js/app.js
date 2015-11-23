@@ -52,11 +52,27 @@ var Player = function(x, y) {
 Player.prototype.update = function(dt) {
     this.x*dt;
     this.y*dt;
+   this.checkEndGame(player);
 };
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+Player.prototype.checkEndGame = function(player){
+    var rect1 = {x: 0, y: 0, width: 500, height: 20}
+    var rect2 = {x: player.x, y: player.y, width: 20, height: 20}
 
+    if (rect1.x < rect2.x + rect2.width &&
+       rect1.x + rect1.width > rect2.x &&
+       rect1.y < rect2.y + rect2.height &&
+       rect1.height + rect1.y > rect2.y) {
+           setTimeout(reset(), 5000);
+    }
+};
+var reset = function (){
+     alert("Congratulations! You win!");
+            player.x = 200;
+            player.y = 400;
+}
 Player.prototype.handleInput = function(dir) {
     if( this.x < 350){ //contains player movement to canvas
         if(dir==='right') this.x+=100;
