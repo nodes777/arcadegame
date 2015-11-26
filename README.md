@@ -1,6 +1,10 @@
-frontend-nanodegree-arcade-game
+#frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+My arcade game is a frogger game clone, playable in your internet browser.
 
-for self-checking their submission.
+##Start Up
+It is playable by opening the index file in the frontend-nanodegree-arcade-game file. Your internet browser should open to the game.
+
+
+The game is played by moving the boy character across the field to the water. Use your arrow keys to guide the character to the water.
