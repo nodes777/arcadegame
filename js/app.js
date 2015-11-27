@@ -17,16 +17,16 @@ Enemy.prototype.update = function(dt) {
 };
 
 Enemy.prototype.checkCollision = function(player) {
-        var enemyHalfWidth = 50;
-        if (player.x < this.x + enemyHalfWidth &&
-            player.x + enemyHalfWidth > this.x &&
-            player.y < this.y + enemyHalfWidth &&
-            enemyHalfWidth + player.y > this.y) {
-            //player position resets
-            player.x = 200;
-            player.y = 400;
-        }
-    };
+    var enemyHalfWidth = 50;
+    if (player.x < this.x + enemyHalfWidth &&
+        player.x + enemyHalfWidth > this.x &&
+        player.y < this.y + enemyHalfWidth &&
+        enemyHalfWidth + player.y > this.y) {
+        //player position resets
+        player.x = 200;
+        player.y = 400;
+    }
+};
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -56,11 +56,11 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.reset = function(hasWon) {
-  if(hasWon === true) {
-    alert("Congratulations! You win!");
-  }
-  this.x = 200;
-  this.y = 400;
+    if (hasWon === true) {
+        alert("Congratulations! You win!");
+    }
+    this.x = 200;
+    this.y = 400;
 }
 Player.prototype.handleInput = function(dir) {
     switch (dir) {
@@ -106,7 +106,7 @@ Player.prototype.handleInput = function(dir) {
         hasWon = true;
         var that = this;
         setTimeout(function() {
-           return that.reset();
+            return that.reset();
         }, 500);
     }
 
